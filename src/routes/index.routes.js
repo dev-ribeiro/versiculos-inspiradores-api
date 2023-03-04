@@ -6,7 +6,7 @@ const { checkSecretKey } = require('../middlewares/checkSecretKey')
 const { pickRandomChapter } = require('../services/pickRandomChapter')
 
 router.get('/health', (req, res) => {
-    return res.status(200).end
+    return res.status(200).end()
 })
 
 router.get('/chapters/random', checkSecretKey, async (req, res) => {
