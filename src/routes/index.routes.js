@@ -2,13 +2,14 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs/promises')
 const path = require('path')
+const { checkSecretKey } = require('../middlewares/checkSecretKey')
 const { pickRandomChapter } = require('../services/pickRandomChapter')
 
 router.get('/health', (req, res) => {
     return res.status(200).end
 })
 
-router.get('/chapters/random', async (req, res) => {
+router.get('/chapters/random', checkSecretKey, async (req, res) => {
     try {
         const data = await fs.readFile(
             path.join(__dirname, '../../biblies/nvi.txt'),
