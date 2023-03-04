@@ -4,6 +4,10 @@ const fs = require('fs/promises')
 const path = require('path')
 const { pickRandomChapter } = require('../services/pickRandomChapter')
 
+router.get('/health', (req, res) => {
+    return res.status(200).end
+})
+
 router.get('/chapters/random', async (req, res) => {
     try {
         const data = await fs.readFile(
