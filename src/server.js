@@ -4,9 +4,7 @@ const app = express()
 const { router } = require('./routes/index.routes')
 const cors = require('cors')
 
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors({ origin: '*'}))
 app.use('/', router)
 
 const PORT = process.env.PORT || 3333
